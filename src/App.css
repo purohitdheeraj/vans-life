@@ -10,6 +10,7 @@
 
 	--BG-WHITE: #fff7ed;
 	--CTA-ORANGE: #ff8c38;
+	--BG-LTORANGE: #ffcc8d;
 	--BG-DKGRAY: #252525;
 	/* fonts */
 	--F-GRAY: #4d4d4d;
@@ -30,25 +31,35 @@ body {
 	max-width: 128rem;
 	min-height: 100vh;
 	margin: 0 auto;
-	/* text-align: center; */
-	/* border: 1px solid; */
+}
+
+body::-webkit-scrollbar {
+	display: none;
+}
+
+body {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
 
 /* header */
-
-.nav {
-	padding: 3.6rem 2.6rem;
-	background: var(--BG-WHITE);
+.header {
 	display: flex;
 	align-items: center;
+	background: var(--BG-WHITE);
+	padding: 3.6rem 2.6rem;
 	color: var(--F-GRAY);
+	height: 11rem;
 }
 
-.nav .logo {
-	margin-right: auto;
-	font-weight: 900;
-	font-size: 2.5rem;
-	color: var(--BLACK);
+.nav {
+	margin-left: auto;
+}
+
+.header .site-logo {
+	display: block;
+	max-width: 100%;
+	width: 14.4rem;
 }
 
 .nav a {
@@ -71,7 +82,7 @@ body {
 			rgba(0, 0, 0, 0.46),
 			rgba(0, 0, 0, 0.46)
 		),
-		url("./assets/home-bg.png");
+		url("./assets/images/home-bg.png");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -98,7 +109,7 @@ body {
 	margin-top: 2.2rem;
 }
 
-.home .cta-btn {
+.home .cta-link {
 	width: 100%;
 	background: var(--CTA-ORANGE);
 	text-align: center;
@@ -109,6 +120,60 @@ body {
 	cursor: pointer;
 	border-radius: 5px;
 	margin-top: 5rem;
+	text-decoration: none;
+}
+
+.cta-link:hover {
+	transform: translate(1px, 1px);
+}
+/* About Page */
+
+.about-page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.about-page > * {
+	margin-bottom: 5rem;
+}
+
+.about-hero-img {
+	width: 100%;
+	height: 30rem;
+}
+
+.about-page-info {
+	max-width: 60rem;
+}
+
+.about-page-info h2 {
+	font-size: 3.2rem;
+	font-weight: 700;
+	line-height: 3.8rem;
+}
+
+.about-page-cta {
+	background: var(--BG-LTORANGE);
+	padding: 2.6rem;
+	border-radius: 8px;
+	max-width: 60rem;
+	width: 100%;
+}
+
+.about-cta-link {
+	background: var(--BLACK);
+	padding: 1rem;
+	color: var(--BG-WHITE);
+	border-radius: 8px;
+	max-width: 18rem;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.about-page-cta h3 {
+	max-width: 42rem;
+	margin-bottom: 5rem;
 }
 
 /* Footer */
