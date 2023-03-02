@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { Badge, Button } from "../UI";
 
 function VanDetail() {
-	const [van, setVan] = useState({});
+	const [van, setVan] = useState(null);
 	const params = useParams();
 
 	useEffect(() => {
@@ -11,12 +12,16 @@ function VanDetail() {
 			.then((data) => setVan(data.vans));
 	}, [params.id]);
 
-	const vanDetailEl = (
+	const vanDetailEl = van ? (
 		<div key={van.id} className="van-details">
 			<Link to="/vans">back to all vans</Link>
 
 			<img src={van.imageUrl} alt={van.name} />
-			<p className="van-type">{van.type}</p>
+			{/* <p className="van-type">{van.type}</p> */}
+
+			<Badge isSelected={true} type={van.type}>
+				{van.type}
+			</Badge>
 
 			<h3 className="van-name">{van.name}</h3>
 			<div className="van-price">
@@ -26,10 +31,11 @@ function VanDetail() {
 			<p className="van-description">
 				{van.description}
 			</p>
-			<button className="cta-link btn">
-				Rent this van
-			</button>
+
+			<Button>Rent this van</Button>
 		</div>
+	) : (
+		<h2>Loading...</h2>
 	);
 
 	return (

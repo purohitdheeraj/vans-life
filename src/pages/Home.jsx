@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from "../UI";
 
 function Home() {
 	return (
@@ -13,8 +14,9 @@ function Home() {
 				#vanlife movement. Rent the perfect van to
 				make your perfect road trip.
 			</p>
+
 			<Link className="cta-link" to="/vans">
-				Find your van
+				<Button>Find your van</Button>
 			</Link>
 		</main>
 	);

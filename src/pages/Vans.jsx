@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../server";
+import { Badge } from "../UI";
 
 function Vans() {
 	const [vans, setVans] = useState([]);
@@ -37,7 +38,12 @@ function Vans() {
 						</div>
 					</div>
 
-					<p className="van-type">{van.type}</p>
+					<Badge
+						isSelected={true}
+						type={van.type}
+					>
+						{van.type}
+					</Badge>
 				</Link>
 			</div>
 		);
@@ -50,6 +56,7 @@ function Vans() {
 	return (
 		<section className="vans-page">
 			<h2>Explore our van options</h2>
+			<div className="vans-filter btns-group"></div>
 			<div className="vans-container">{vansEl}</div>
 		</section>
 	);
