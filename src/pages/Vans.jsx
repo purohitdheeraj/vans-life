@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "../server";
 
 function Vans() {
@@ -16,24 +17,35 @@ function Vans() {
 	const vansEl = vans.map((van) => {
 		return (
 			<div key={van.id} className="van-tile">
-				<img src={van.imageUrl} alt={van.name} />
-				<div className="van-info">
-					<h3 className="van-name">{van.name}</h3>
-					<div className="van-price">
-						<span className="price">
-							${van.price}
-						</span>{" "}
-						<br />
-						<span className="per-unit">
-							/Day
-						</span>
+				<Link to={`/vans/${van.id}`}>
+					<img
+						src={van.imageUrl}
+						alt={van.name}
+					/>
+					<div className="van-info">
+						<h3 className="van-name">
+							{van.name}
+						</h3>
+						<div className="van-price">
+							<span className="price">
+								${van.price}
+							</span>{" "}
+							<br />
+							<span className="per-unit">
+								/Day
+							</span>
+						</div>
 					</div>
-				</div>
 
-				<p className="van-type">{van.type}</p>
+					<p className="van-type">{van.type}</p>
+				</Link>
 			</div>
 		);
 	});
+
+	if (vans.length <= 0) {
+		return <h2>Loading...</h2>;
+	}
 
 	return (
 		<section className="vans-page">

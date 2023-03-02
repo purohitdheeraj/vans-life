@@ -109,7 +109,8 @@ body {
 	margin-top: 2.2rem;
 }
 
-.home .cta-link {
+.home .cta-link,
+.cta-link {
 	width: 100%;
 	background: var(--CTA-ORANGE);
 	text-align: center;
@@ -181,6 +182,11 @@ body {
 	padding: 5.4rem 2.6rem;
 }
 
+.vans-page a {
+	text-decoration: none;
+	color: var(--BLACK);
+}
+
 .vans-page h2 {
 	font-size: 3.2rem;
 	font-weight: 700;
@@ -209,7 +215,7 @@ body {
 	margin-top: 1rem;
 }
 
-.van-tile h3 {
+.van-name {
 	font-size: 2rem;
 	font-weight: 600;
 	line-height: 3rem;
@@ -227,6 +233,26 @@ body {
 	border: 1px solid;
 	max-width: 8.5rem;
 	text-align: center;
+	border-radius: 5px;
+}
+
+/* van detail page */
+.van-details-page {
+	padding: 4rem 5rem;
+}
+
+.van-details {
+	margin: 0 auto;
+	max-width: 70rem;
+}
+
+.van-details .cta-link {
+	padding: 1rem;
+}
+
+.van-details img {
+	max-width: 100%;
+	margin-top: 4rem;
 	border-radius: 5px;
 }
 
