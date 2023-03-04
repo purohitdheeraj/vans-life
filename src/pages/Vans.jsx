@@ -28,7 +28,13 @@ function Vans() {
 	const vansEl = filteredVans.map((van) => {
 		return (
 			<div key={van.id} className="van-tile">
-				<Link to={`/vans/${van.id}`}>
+				<Link
+					to={`/vans/${van.id}`}
+					state={{
+						search: searchParams.toString(),
+						type: typeFilter,
+					}}
+				>
 					<img
 						src={van.imageUrl}
 						alt={van.name}
@@ -89,7 +95,7 @@ function Vans() {
 					onClick={() =>
 						handleFilterChange("type", "simple")
 					}
-					onHover
+					onHover={true}
 					type="simple"
 				>
 					Simple
@@ -104,7 +110,7 @@ function Vans() {
 					onClick={() =>
 						handleFilterChange("type", "luxury")
 					}
-					onHover
+					onHover={true}
 					type="luxury"
 				>
 					Luxury
@@ -119,7 +125,7 @@ function Vans() {
 					onClick={() =>
 						handleFilterChange("type", "rugged")
 					}
-					onHover
+					onHover={true}
 					type="rugged"
 				>
 					Rugged
@@ -131,7 +137,7 @@ function Vans() {
 						onClick={() =>
 							handleFilterChange("type", null)
 						}
-						onHover
+						onHover={true}
 						type="clear"
 					>
 						clear

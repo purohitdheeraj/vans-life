@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import {
+	Link,
+	useLocation,
+	useParams,
+} from "react-router-dom";
 import { Badge, Button } from "../UI";
 
 function VanDetail() {
 	const [van, setVan] = useState(null);
 	const params = useParams();
+	const location = useLocation();
+
+	let search = location.state?.search || "";
+	let type = location.state?.type || "all";
 
 	useEffect(() => {
 		fetch(`/api/vans/${params.id}`)
@@ -14,7 +22,9 @@ function VanDetail() {
 
 	const vanDetailEl = van ? (
 		<div key={van.id} className="van-details">
-			<Link to="/vans">back to all vans</Link>
+			<Link to={`..?${search}`} relative="path">
+				back to {type} vans
+			</Link>
 
 			<img src={van.imageUrl} alt={van.name} />
 
