@@ -15,8 +15,8 @@ function Home() {
 				make your perfect road trip.
 			</p>
 
-			<Link className="cta-link" to="/vans">
-				<Button>Find your van</Button>
+			<Link className="btn cta-home" to="/vans">
+				Find your van
 			</Link>
 		</main>
 	);

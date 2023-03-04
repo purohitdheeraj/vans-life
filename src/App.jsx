@@ -4,23 +4,39 @@ import {
 	Routes,
 	Route,
 } from "react-router-dom";
-import { About, Home, Vans, VanDetail } from "./pages";
-import { Footer, Header } from "./components";
+import {
+	Home,
+	About,
+	Vans,
+	VanDetail,
+	NotFound,
+} from "./pages";
+import { Layout } from "./components";
 
 function App() {
 	return (
 		<BrowserRouter>
-			<Header />
 			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/about" element={<About />} />
-				<Route path="/vans" element={<Vans />} />
-				<Route
-					path="/vans/:id"
-					element={<VanDetail />}
-				/>
+				<Route path="/" element={<Layout />}>
+					<Route index element={<Home />} />
+					<Route
+						path="/about"
+						element={<About />}
+					/>
+					<Route
+						path="/vans"
+						element={<Vans />}
+					/>
+					<Route
+						path="/vans/:id"
+						element={<VanDetail />}
+					/>
+					<Route
+						path="*"
+						element={<NotFound />}
+					/>
+				</Route>
 			</Routes>
-			<Footer />
 		</BrowserRouter>
 	);
 }

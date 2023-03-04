@@ -17,7 +17,6 @@ function VanDetail() {
 			<Link to="/vans">back to all vans</Link>
 
 			<img src={van.imageUrl} alt={van.name} />
-			{/* <p className="van-type">{van.type}</p> */}
 
 			<Badge isSelected={true} type={van.type}>
 				{van.type}

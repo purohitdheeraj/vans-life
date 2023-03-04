@@ -35,7 +35,7 @@ function About() {
 					Your destination is waiting. <br />
 					Your van is ready.
 				</h3>
-				<Link to="/vans" className="about-cta-link">
+				<Link to="/vans" className="btn cta-about">
 					Explore our vans
 				</Link>
 			</section>

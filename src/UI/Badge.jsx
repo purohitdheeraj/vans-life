@@ -13,8 +13,6 @@ const getBackground = (type) => {
 	}
 };
 
-console.log(getBackground("simple"));
-
 const StyledBadge = styled.div`
 	background: ${(props) =>
 		props.isSelected && props.type
