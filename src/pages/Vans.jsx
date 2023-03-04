@@ -51,6 +51,7 @@ function Vans() {
 					<Badge
 						isSelected={true}
 						type={van.type}
+						className="van-type"
 					>
 						{van.type}
 					</Badge>
@@ -80,7 +81,11 @@ function Vans() {
 
 			<div className="vans-filters">
 				<Badge
-					className="btn"
+					className={`btn van-type simple ${
+						typeFilter === "simple"
+							? "selected"
+							: ""
+					}`}
 					onClick={() =>
 						handleFilterChange("type", "simple")
 					}
@@ -91,7 +96,11 @@ function Vans() {
 				</Badge>
 
 				<Badge
-					className="btn"
+					className={`btn van-type luxury ${
+						typeFilter === "luxury"
+							? "selected"
+							: ""
+					}`}
 					onClick={() =>
 						handleFilterChange("type", "luxury")
 					}
@@ -102,7 +111,11 @@ function Vans() {
 				</Badge>
 
 				<Badge
-					className="btn"
+					className={`btn van-type rugged ${
+						typeFilter === "rugged"
+							? "selected"
+							: ""
+					}`}
 					onClick={() =>
 						handleFilterChange("type", "rugged")
 					}
@@ -124,7 +137,6 @@ function Vans() {
 						clear
 					</Badge>
 				)}
-				
 			</div>
 			<div className="vans-container">{vansEl}</div>
 		</section>

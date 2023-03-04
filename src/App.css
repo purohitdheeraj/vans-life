@@ -255,7 +255,46 @@ body {
 	background: var(--BG-WHITE);
 	flex: 1 1 10rem;
 	cursor: pointer;
-	/* color: var(--BG-DKGRAY); */
+}
+
+.van-type:hover {
+	color: #ffead0;
+}
+
+.van-type:focus {
+	outline: none;
+}
+
+.van-type.selected {
+	color: #ffead0;
+}
+
+.van-type.simple:hover,
+.van-type.simple.selected {
+	background-color: #e17654;
+}
+
+.van-type.rugged:hover,
+.van-type.rugged.selected {
+	background-color: #115e59;
+}
+
+.van-type.luxury:hover,
+.van-type.luxury.selected {
+	background-color: #161616;
+}
+
+.van-type.clear-filters {
+	margin-left: -20px;
+	height: 34px;
+	padding: 6px 26px;
+	font-style: normal;
+	font-weight: 500;
+	border: none;
+	border-radius: 5px;
+	text-decoration: underline;
+	background-color: transparent;
+	color: #4d4d4d;
 }
 
 /* van detail page */

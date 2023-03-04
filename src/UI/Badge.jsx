@@ -35,9 +35,6 @@ const StyledBadge = styled.div`
 			props.onHover && getBackground(props.type)};
 		color: #fff;
 	}
-
-	&:selected {
-	}
 `;
 
 function Badge(props) {
