@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import "../server";
+import { Link, useSearchParams } from "react-router-dom";
+
 import { Badge } from "../UI";
 
 function Vans() {
 	const [vans, setVans] = useState([]);
+	const [searchParams, setSearchParams] =
+		useSearchParams();
 
 	// load data on page first render
 	useEffect(() => {
@@ -13,9 +15,17 @@ function Vans() {
 			.then((data) => setVans(data.vans));
 	}, []);
 
-	console.log(vans);
+	const typeFilter = searchParams.get("type");
 
-	const vansEl = vans.map((van) => {
+	const filteredVans = typeFilter
+		? vans.filter((van) => {
+				return (
+					van.type.toLowerCase() === typeFilter
+				);
+		  })
+		: vans;
+
+	const vansEl = filteredVans.map((van) => {
 		return (
 			<div key={van.id} className="van-tile">
 				<Link to={`/vans/${van.id}`}>
@@ -49,6 +59,17 @@ function Vans() {
 		);
 	});
 
+	const handleFilterChange = (key, value) => {
+		setSearchParams((prevParams) => {
+			if (value === null) {
+				prevParams.delete(key);
+			} else {
+				prevParams.set(key, value);
+			}
+			return prevParams;
+		});
+	};
+
 	if (vans.length <= 0) {
 		return <h2>Loading...</h2>;
 	}
@@ -56,7 +77,55 @@ function Vans() {
 	return (
 		<section className="vans-page">
 			<h2>Explore our van options</h2>
-			<div className="vans-filter btns-group"></div>
+
+			<div className="vans-filters">
+				<Badge
+					className="btn"
+					onClick={() =>
+						handleFilterChange("type", "simple")
+					}
+					onHover
+					type="simple"
+				>
+					Simple
+				</Badge>
+
+				<Badge
+					className="btn"
+					onClick={() =>
+						handleFilterChange("type", "luxury")
+					}
+					onHover
+					type="luxury"
+				>
+					Luxury
+				</Badge>
+
+				<Badge
+					className="btn"
+					onClick={() =>
+						handleFilterChange("type", "rugged")
+					}
+					onHover
+					type="rugged"
+				>
+					Rugged
+				</Badge>
+
+				{typeFilter && (
+					<Badge
+						className="btn"
+						onClick={() =>
+							handleFilterChange("type", null)
+						}
+						onHover
+						type="clear"
+					>
+						clear
+					</Badge>
+				)}
+				
+			</div>
 			<div className="vans-container">{vansEl}</div>
 		</section>
 	);

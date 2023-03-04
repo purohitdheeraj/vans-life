@@ -12,6 +12,7 @@ import {
 	NotFound,
 } from "./pages";
 import { Layout } from "./components";
+import "./server";
 
 function App() {
 	return (

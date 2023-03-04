@@ -8,6 +8,8 @@ const getBackground = (type) => {
 			return "#115E59";
 		case "luxury":
 			return "#161616";
+		case "clear":
+			return "#4D4D4D";
 		default:
 			return "#FFEAD0";
 	}
@@ -22,8 +24,20 @@ const StyledBadge = styled.div`
 		props.isSelected ? "#FFEAD0" : "#4D4D4D"};
 	text-align: center;
 	padding: 6px;
-	max-width: 10rem;
+	max-width: ${(props) =>
+		props.maxWidth ? props.maxWidth : "10rem"};
 	border-radius: 5px;
+	display: grid;
+	place-items: center;
+
+	&:hover {
+		background: ${(props) =>
+			props.onHover && getBackground(props.type)};
+		color: #fff;
+	}
+
+	&:selected {
+	}
 `;
 
 function Badge(props) {

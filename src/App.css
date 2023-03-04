@@ -241,6 +241,23 @@ body {
 	font-size: 2rem;
 }
 
+/* van - filters */
+.vans-filters {
+	display: flex;
+	gap: 8px;
+	margin: 2rem 0;
+	border-radius: 5px;
+	border: none;
+	flex-wrap: wrap;
+}
+
+.vans-filters > * {
+	background: var(--BG-WHITE);
+	flex: 1 1 10rem;
+	cursor: pointer;
+	/* color: var(--BG-DKGRAY); */
+}
+
 /* van detail page */
 .van-details-page {
 	padding: 4rem 5rem;

@@ -7,20 +7,22 @@ const ButtonStyled = styled.button`
 	width: 100%;
 	text-align: center;
 	padding: 8px;
-  color: #fff;
+	color: #fff;
 	font-weight: 700;
 	cursor: pointer;
 	border-radius: 5px;
 	margin-top: 5rem;
 	text-decoration: none;
 
-  &:hover{
-    transform: translate(1px, 1px);
-  }
+	&:hover {
+		transform: translate(1px, 1px);
+	}
 `;
 
-const Button = ({ children }) => {
-	return <ButtonStyled>{children}</ButtonStyled>;
+const Button = ({ children }, props) => {
+	return (
+		<ButtonStyled {...props}>{children}</ButtonStyled>
+	);
 };
 
 export default Button;
