@@ -7,6 +7,8 @@ function Vans() {
 	const [vans, setVans] = useState([]);
 	const [searchParams, setSearchParams] =
 		useSearchParams();
+	const [searchInput, setSearchInput] = useState("");
+	const [filteredData, setFilteredData] = useState([]);
 
 	// load data on page first render
 	useEffect(() => {
@@ -17,15 +19,31 @@ function Vans() {
 
 	const typeFilter = searchParams.get("type");
 
-	const filteredVans = typeFilter
-		? vans.filter((van) => {
-				return (
-					van.type.toLowerCase() === typeFilter
-				);
-		  })
-		: vans;
+	useEffect(() => {
+		let filteredVans = vans.filter((van) => {
+			return van.type.toLowerCase() === typeFilter;
+		});
 
-	const vansEl = filteredVans.map((van) => {
+		setFilteredData(filteredVans);
+	}, [typeFilter]);
+
+	const handleSearch = (e) => {
+		let searchQuery = e.target.value;
+		setSearchInput(searchQuery);
+		let filteredVans = vans.filter((van) => {
+			return Object.values(van)
+				.join("")
+				.toLowerCase()
+				.includes(searchQuery);
+		});
+		setFilteredData(filteredVans);
+		setSearchParams({});
+	};
+
+	let displayedData =
+		filteredData.length > 0 ? filteredData : vans;
+
+	const vansEl = displayedData.map((van) => {
 		return (
 			<div key={van.id} className="van-tile">
 				<Link
@@ -84,6 +102,13 @@ function Vans() {
 	return (
 		<section className="vans-page">
 			<h2>Explore our van options</h2>
+
+			<input
+				type="text"
+				value={searchInput}
+				placeholder="fuzzy search"
+				onChange={handleSearch}
+			/>
 
 			<div className="vans-filters">
 				<Badge
