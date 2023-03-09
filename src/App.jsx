@@ -3,6 +3,9 @@ import {
 	BrowserRouter,
 	Routes,
 	Route,
+	createBrowserRouter,
+	RouterProvider,
+	createRoutesFromElements,
 } from "react-router-dom";
 import {
 	Home,
@@ -13,6 +16,8 @@ import {
 } from "./pages";
 import { Layout } from "./components";
 import "./server";
+
+// const router = createBrowserRouter(createRoutesFromElements())
 
 function App() {
 	return (

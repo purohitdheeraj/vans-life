@@ -32,7 +32,7 @@ const StyledBadge = styled.div`
 
 	&:hover {
 		background: ${(props) =>
-			props.onHover && getBackground(props.type)};
+			props.toHover && getBackground(props.type)};
 		color: #fff;
 	}
 `;

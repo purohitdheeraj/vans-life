@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-
+import { getVans } from "../api";
 import { Badge } from "../UI";
 
 function Vans() {
@@ -10,21 +10,34 @@ function Vans() {
 	const [searchInput, setSearchInput] = useState("");
 	const [filteredData, setFilteredData] = useState([]);
 
-	// load data on page first render
-	useEffect(() => {
-		fetch("/api/vans")
-			.then((res) => res.json())
-			.then((data) => setVans(data.vans));
-	}, []);
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState("");
 
 	const typeFilter = searchParams.get("type");
 
+	// load data on page first render
 	useEffect(() => {
-		let filteredVans = vans.filter((van) => {
+		async function loadData() {
+			setLoading(true);
+			try {
+				const data = await getVans();
+				setVans(data);
+			} catch (error) {
+				setError(error);
+			} finally {
+				setLoading(false);
+			}
+		}
+
+		loadData();
+	}, []);
+
+	useEffect(() => {
+		let newFilteredVans = vans.filter((van) => {
 			return van.type.toLowerCase() === typeFilter;
 		});
 
-		setFilteredData(filteredVans);
+		setFilteredData(newFilteredVans);
 	}, [typeFilter]);
 
 	const handleSearch = (e) => {
@@ -41,7 +54,7 @@ function Vans() {
 	};
 
 	let displayedData =
-		filteredData.length > 0 ? filteredData : vans;
+		typeFilter || searchInput ? filteredData : vans;
 
 	const vansEl = displayedData.map((van) => {
 		return (
@@ -95,7 +108,11 @@ function Vans() {
 		});
 	};
 
-	if (vans.length <= 0) {
+	if (error) {
+		return <h2>{error.message}</h2>;
+	}
+
+	if (loading) {
 		return <h2>Loading...</h2>;
 	}
 
@@ -120,7 +137,7 @@ function Vans() {
 					onClick={() =>
 						handleFilterChange("type", "simple")
 					}
-					onHover={true}
+					toHover={true}
 					type="simple"
 				>
 					Simple
@@ -135,7 +152,7 @@ function Vans() {
 					onClick={() =>
 						handleFilterChange("type", "luxury")
 					}
-					onHover={true}
+					toHover={true}
 					type="luxury"
 				>
 					Luxury
@@ -150,7 +167,7 @@ function Vans() {
 					onClick={() =>
 						handleFilterChange("type", "rugged")
 					}
-					onHover={true}
+					toHover={true}
 					type="rugged"
 				>
 					Rugged
@@ -162,7 +179,7 @@ function Vans() {
 						onClick={() =>
 							handleFilterChange("type", null)
 						}
-						onHover={true}
+						toHover={true}
 						type="clear"
 					>
 						clear
