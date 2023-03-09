@@ -1,7 +1,5 @@
 import "./App.css";
 import {
-	BrowserRouter,
-	Routes,
 	Route,
 	createBrowserRouter,
 	RouterProvider,
@@ -14,37 +12,33 @@ import {
 	VanDetail,
 	NotFound,
 } from "./pages";
-import { Layout } from "./components";
+import { Error, Layout } from "./components";
 import "./server";
 
-// const router = createBrowserRouter(createRoutesFromElements())
+import { loader } from "./pages/Vans";
+
+const router = createBrowserRouter(
+	createRoutesFromElements(
+		<Route path="/" element={<Layout />}>
+			<Route index element={<Home />} />
+			<Route path="/about" element={<About />} />
+			<Route
+				path="/vans"
+				element={<Vans />}
+				loader={loader}
+				errorElement={<Error />}
+			/>
+			<Route
+				path="/vans/:id"
+				element={<VanDetail />}
+			/>
+			<Route path="*" element={<NotFound />} />
+		</Route>
+	)
+);
 
 function App() {
-	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<Layout />}>
-					<Route index element={<Home />} />
-					<Route
-						path="/about"
-						element={<About />}
-					/>
-					<Route
-						path="/vans"
-						element={<Vans />}
-					/>
-					<Route
-						path="/vans/:id"
-						element={<VanDetail />}
-					/>
-					<Route
-						path="*"
-						element={<NotFound />}
-					/>
-				</Route>
-			</Routes>
-		</BrowserRouter>
-	);
+	return <RouterProvider router={router} />;
 }
 
 export default App;

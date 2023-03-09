@@ -1,36 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import {
+	Link,
+	useLoaderData,
+	useSearchParams,
+} from "react-router-dom";
 import { getVans } from "../api";
 import { Badge } from "../UI";
 
+export async function loader() {
+	return await getVans();
+}
+
 function Vans() {
-	const [vans, setVans] = useState([]);
+	// const [vans, setVans] = useState([]);
 	const [searchParams, setSearchParams] =
 		useSearchParams();
 	const [searchInput, setSearchInput] = useState("");
 	const [filteredData, setFilteredData] = useState([]);
 
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState("");
+	const vans = useLoaderData();
 
 	const typeFilter = searchParams.get("type");
-
-	// load data on page first render
-	useEffect(() => {
-		async function loadData() {
-			setLoading(true);
-			try {
-				const data = await getVans();
-				setVans(data);
-			} catch (error) {
-				setError(error);
-			} finally {
-				setLoading(false);
-			}
-		}
-
-		loadData();
-	}, []);
 
 	useEffect(() => {
 		let newFilteredVans = vans.filter((van) => {
@@ -108,13 +98,13 @@ function Vans() {
 		});
 	};
 
-	if (error) {
-		return <h2>{error.message}</h2>;
-	}
+	// if (error) {
+	// 	return <h2>{error.message}</h2>;
+	// }
 
-	if (loading) {
-		return <h2>Loading...</h2>;
-	}
+	// if (loading) {
+	// 	return <h2>Loading...</h2>;
+	// }
 
 	return (
 		<section className="vans-page">
