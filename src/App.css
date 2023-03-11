@@ -67,7 +67,7 @@ body {
 	margin: 0 1.2rem;
 }
 
-.nav a:visited {
+.nav a:link, .nav a:visited {
 	color: #4d4d4d;
 }
 
@@ -75,6 +75,16 @@ body {
 	text-decoration: underline;
 }
 
+.nav a:active {
+	color: #252525;
+}
+
+
+
+.activeLink{
+	font-weight: bolder;
+
+}
 /* home page */
 .home {
 	background: linear-gradient(
