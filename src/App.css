@@ -67,7 +67,8 @@ body {
 	margin: 0 1.2rem;
 }
 
-.nav a:link, .nav a:visited {
+.nav a:link,
+.nav a:visited {
 	color: #4d4d4d;
 }
 
@@ -79,11 +80,8 @@ body {
 	color: #252525;
 }
 
-
-
-.activeLink{
+.activeLink {
 	font-weight: bolder;
-
 }
 /* home page */
 .home {
@@ -227,7 +225,8 @@ body {
 	flex: 1 1 24rem;
 }
 
-.van-tile img {
+.van-tile img,
+.tile img {
 	max-width: 100%;
 	border-radius: 5px;
 }
@@ -304,7 +303,7 @@ body {
 	border-radius: 5px;
 	text-decoration: underline;
 	background-color: transparent;
-	color: #4d4d4d;
+	color: var(--F-GRAY);
 }
 
 /* van detail page */
@@ -321,6 +320,52 @@ body {
 	max-width: 100%;
 	margin-top: 4rem;
 	border-radius: 5px;
+}
+
+/* host vans */
+
+.host-header {
+	padding: 3.6rem 2.6rem;
+	background: var(--BG-WHITE);
+}
+
+.host-vans {
+	padding: 3.2rem 2.6rem;
+	background: var(--BG-WHITE);
+}
+.host-vans a {
+	text-decoration: none;
+	color: var(--BG-DKGRAY);
+}
+
+.host-vans-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1.6rem;
+}
+
+.host-van {
+	display: flex;
+	align-items: center;
+	background: var(--WHITE);
+	padding: 1.8rem 2.4rem;
+	border-radius: 6px;
+}
+
+.host-van img {
+	width: 6.5rem;
+	height: 6.5rem;
+	aspect-ratio: 1/1;
+}
+
+.host-van-info {
+	margin-left: 1.6rem;
+}
+
+.host-van-info p,
+.host-van-info h3 {
+	margin-block: 0;
+	margin-bottom: 8px;
 }
 
 /* Footer */
