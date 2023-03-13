@@ -33,6 +33,10 @@ body {
 	margin: 0 auto;
 }
 
+img {
+	max-width: 100%;
+}
+
 body::-webkit-scrollbar {
 	display: none;
 }
@@ -58,7 +62,6 @@ body {
 
 .header .site-logo {
 	display: block;
-	max-width: 100%;
 	width: 14.4rem;
 }
 
@@ -227,7 +230,6 @@ body {
 
 .van-tile img,
 .tile img {
-	max-width: 100%;
 	border-radius: 5px;
 }
 
@@ -317,7 +319,6 @@ body {
 }
 
 .van-details img {
-	max-width: 100%;
 	margin-top: 4rem;
 	border-radius: 5px;
 }
@@ -366,6 +367,35 @@ body {
 .host-van-info h3 {
 	margin-block: 0;
 	margin-bottom: 8px;
+}
+
+/* host van detail */
+
+.host-van-detail-page {
+	background: var(--BG-WHITE);
+	padding: 3.6rem 2.6rem;
+}
+
+.host-van-detail {
+	padding: 2.3rem 2.5rem;
+	border-radius: 6px;
+	background: var(--WHITE);
+	display: flex;
+	margin-top: 3.6rem;
+}
+
+.host-van-detail-image {
+	width: 16rem;
+	height: 16rem;
+	aspect-ratio: 1/1;
+}
+
+.host-van-detail-info {
+	margin-left: 2rem;
+}
+
+.host-van-detail-info h2 {
+	font-size: 2.6rem;
 }
 
 /* Footer */

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getHostVans, getVans } from "../../api";
+import { getHostVans } from "../../api";
 
 function HostVans() {
 	const [vans, setVans] = useState([]);
