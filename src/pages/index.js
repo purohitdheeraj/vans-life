@@ -9,6 +9,10 @@ import HostVans from "./Host/HostVans";
 import HostVanDetail from "./Host/HostVanDetail";
 import Reviews from "./Host/Reviews";
 
+import Details from "./Host/HostVansRoutes/Details";
+import Pricing from "./Host/HostVansRoutes/Pricing";
+import Photos from "./Host/HostVansRoutes/Photos";
+
 export {
 	About,
 	Home,
@@ -19,5 +23,8 @@ export {
 	Income,
 	HostVans,
 	HostVanDetail,
+	Details,
+	Pricing,
+	Photos,
 	Reviews,
 };

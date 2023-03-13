@@ -327,7 +327,7 @@ body {
 
 .host-header {
 	padding: 3.6rem 2.6rem;
-	background: var(--BG-WHITE);
+	background: var(--WHITE);
 }
 
 .host-vans {
@@ -374,14 +374,20 @@ body {
 .host-van-detail-page {
 	background: var(--BG-WHITE);
 	padding: 3.6rem 2.6rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.host-van-header {
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .host-van-detail {
-	padding: 2.3rem 2.5rem;
 	border-radius: 6px;
-	background: var(--WHITE);
-	display: flex;
+	padding: 2.3rem 2.5rem;
 	margin-top: 3.6rem;
+	background: var(--WHITE);
 }
 
 .host-van-detail-image {

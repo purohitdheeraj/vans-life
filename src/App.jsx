@@ -16,6 +16,9 @@ import {
 	HostVans,
 	Reviews,
 	HostVanDetail,
+	Details,
+	Pricing,
+	Photos,
 } from "./pages";
 import { Error, HostLayout, Layout } from "./components";
 import "./server";
@@ -45,7 +48,17 @@ const router = createBrowserRouter(
 				<Route
 					path="vans/:id"
 					element={<HostVanDetail />}
-				/>
+				>
+					<Route index element={<Details />} />
+					<Route
+						path="pricing"
+						element={<Pricing />}
+					/>
+					<Route
+						path="photos"
+						element={<Photos />}
+					/>
+				</Route>
 				<Route
 					path="reviews"
 					element={<Reviews />}
